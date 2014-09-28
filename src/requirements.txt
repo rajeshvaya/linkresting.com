@@ -1,0 +1,22 @@
+#bootstrap
+Django==1.6.5
+MySQL-python==1.2.5
+#psycopg2==2.5.3
+python-memcached==1.53
+
+
+#migration / database
+South==0.8.4
+
+#admin tools
+django-admin-tools
+
+# Debugging
+django-debugtools >= 1.2
+
+# release
+django-waffle
+
+#utils
+django-model-utils==2.0.3
+logutils==0.3.3
