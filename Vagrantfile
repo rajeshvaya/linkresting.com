@@ -24,7 +24,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision "shell", path: "vagrant_resources/install/install.sh"
   config.vm.provision "shell", path: "vagrant_resources/install/bootstrap.sh", privileged: false
 
+
   config.vm.network "forwarded_port", guest: 8000, host: 8000
+  config.vm.network "forwarded_port", guest: 8001, host: 8001
   config.vm.network "forwarded_port", guest: 3306, host: 3000
 
   # Create a forwarded port mapping which allows access to a specific port
