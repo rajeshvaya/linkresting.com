@@ -1,0 +1,91 @@
+/********* MIXINS *********/
+.font-size(@px: 14){
+    font-size:(@px/14*100%) ;
+}
+
+.border-radius(@params){
+    border-radius: @params;
+    -webkit-border-radius: @params;
+    -moz-border-radius: @params;
+    -o-border-radius: @params;
+    -ms-border-radius: @params;
+    -khtml-border-radius: @params;
+}
+
+.transitioner(@params){
+  transition:@params;
+  -webkit-transition:@params; /* Safari and Chrome */
+  -moz-transition:@params; /* Firefox 4 */
+  -o-transition:@params; /* Opera */
+  -ms-transition:@params; /* IE*/
+}
+
+.transformer(@params){
+    transform: @params;
+    -webkit-transform: @params;
+    -moz-transform: @params;
+    -o-transform: @params;
+    -ms-transform: @params;
+    
+}
+
+.transformer-origin(@params){
+    transform-origin: @params;
+    -webkit-transform-origin: @params;
+    -moz-transform-origin: @params;
+    -o-transform-origin: @params;
+    -ms-transform-origin: @params;
+    
+}
+
+.slide-up {
+    .transitioner(height 0.95s);
+    max-height: 0px;
+    overflow: hidden;
+}
+.slide-down {
+    .transitioner(height 0.95s);
+    max-height: 9999px;
+}
+
+
+.absolute-slide-up{
+    .transitioner(top 0.80s);
+    top: -1000px;
+}
+
+.absolute-slide-down{
+    .transitioner(top 0.80s);
+    top: 0px;
+}
+
+.rotate45{
+    .transformer(rotate(45deg));
+}
+
+.shadow{
+    -moz-box-shadow: 0px 0px 125px black;
+    -webkit-box-shadow: 0px 0px 125px black;
+    box-shadow: 0px 0px 125px black;
+}
+
+
+.opacity(@o: 0.8) {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+  -moz-opacity: @o;
+  -khtml-opacity: @o;
+  opacity: @o;
+}
+
+/********* MIXINS *********/
+
+
+body{
+	font-family: "Raleway", "Helvetica";
+	background-color: rgb(241, 242, 246);
+}
+
+
+
+
+

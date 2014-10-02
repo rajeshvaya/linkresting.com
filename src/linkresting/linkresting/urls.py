@@ -4,7 +4,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render_to_response
 
 
 def design_index(request):
