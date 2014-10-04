@@ -79,13 +79,66 @@
 
 /********* MIXINS *********/
 
-
 body{
 	font-family: "Raleway", "Helvetica";
 	background-color: rgb(241, 242, 246);
 }
 
+.form-control{
+	border: 0px solid #fff !important;
+}
+
+.default-border{
+	border-style: dotted;
+}
+
+.default-hr{
+	border-top: 1px dotted black;
+}
+
+.footer{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	border-top: 1px dotted #aaa;
+	padding:10px;
+	text-align: center;	
+	margin-top: 20px;
+}
 
 
 
+.stories{
+	.story{
+		padding: 10px 0px;
+		border-bottom: 1px dotted #ccc;
+		.story-link{
+			.story-title{
+				a{
+					.font-size(18);
+					color: black;
+					&:visited{color:#aaa}
+				}	
+				.story-domain{
+					padding-left: 5px;
+					color: #aaa;
+					.font-size(12);
+				}
+			}
+		}
+		.story-info{
+			.font-size(12);
+		}
+	}
+}
+
+.comments-container{
+	margin-top: 20px;
+	
+}
+
+
+.login-register-divider{
+	border-left: 1px dotted #ccc;
+}
 
