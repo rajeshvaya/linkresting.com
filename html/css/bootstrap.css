@@ -4082,7 +4082,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-default {
   background-color: #4a89dc;
-  border-color: #2e77d7;
+  border-color: #4a89dc; /*#2e77d7;*/
 }
 .navbar-default .navbar-brand {
   color: #ffffff;

@@ -29,6 +29,14 @@ if ! command -v git; then
     sudo apt-get install git -y
 fi
 
+#sqlite3
+if ! command -v sqlite3; then
+    echo "=============================="
+    echo "Installing sqlite3"
+    echo "=============================="
+    sudo apt-get install sqlite3 -y
+fi
+
 
 #mysql
 if ! command -v mysql; then
@@ -41,6 +49,9 @@ if ! command -v mysql; then
 
     apt-get install python-dev -y
     apt-get install libmysqlclient-dev -y
+    apt-get install mysql-client-core-5.5 -y
+    apt-get install mysql-server mysql-client -y
+    
 fi
 
 # pip
