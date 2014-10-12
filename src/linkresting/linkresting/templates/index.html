@@ -1,0 +1,37 @@
+{% extends "layout/default/template.html" %}
+{% load story_extras %}
+
+{% block content %}
+	<div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10">
+                <div class="stories-container">
+                    <div class="stories">
+                        <ol>
+                        	{% for story in stories %}
+                            <li class="story">
+                                <div class="story-link">
+                                    <div class="story-title">
+                                        <a href="{{ story.url }}" target="_blank">{{ story.title }}</a>
+                                        <span class="story-domain"> ({{ story.domain }}) </span><!-- story-domain -->
+                                    </div> <!-- story-title -->
+                                    
+                                    <div class="clearfix"></div>
+                                </div><!-- story-link -->
+                                <div class="story-info">
+                                    <span class="story-moderator">Submitted by {{ story.moderator.username }} </span><!-- story-moderator -->
+                                    <span class="divider"> | </span>
+                                    <span class="story-time">  {{ story.created_at | age}} ago </span> <!-- story-time -->
+                                    <span class="divider"> | </span>
+                                    <span class="story-comments"> 6 comments </span> <!-- story-comments -->
+                                </div><!-- story-info -->
+                            </li><!-- story -->
+                            {% endfor %}
+                        </ol>
+                    </div><!-- stories -->
+                </div><!-- stories-container -->
+            </div>
+        </div>
+    </div> <!-- container -->
+{% endblock content %}
+
