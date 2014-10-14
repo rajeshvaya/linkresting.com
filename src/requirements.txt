@@ -4,6 +4,7 @@ MySQL-python==1.2.5
 #psycopg2==2.5.3
 python-memcached==1.53
 requests
+django-crispy-forms
 
 #migration / database
 South==0.8.4

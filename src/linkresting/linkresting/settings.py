@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'south',
     'stories',
+    'crispy_forms',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -96,3 +97,4 @@ TEMPLATE_DIRS = (
 )
 
 
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
