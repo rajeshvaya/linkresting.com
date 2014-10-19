@@ -96,5 +96,9 @@ TEMPLATE_DIRS = (
     os.path.join(os.path.dirname(os.path.realpath(__file__)), 'templates'),
 )
 
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/'
+
+APPEND_SLASH = True
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
