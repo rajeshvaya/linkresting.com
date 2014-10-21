@@ -11,18 +11,18 @@
                     {% if form.errors %}
                     <p>Your username and password didn't match. Please try again.</p>
                     {% endif %}
-                    <form class="form-horizontal" role="" autocomplete="off" action="{% url 'django.contrib.auth.views.login' %}">
+                    <form class="form-horizontal" role="" autocomplete="off" action="{% url 'auth.signin' %}" method="POST">{% csrf_token %}
                       <div class="form-group">
                         <label for="email" class="col-sm-3 control-label">Email</label>
                         <div class="col-sm-9">
-                          <input type="email" class="form-control" id="login-email" placeholder="Email">
+                          <input type="email" class="form-control" id="login-email" placeholder="Email" name="username">
                         </div>
                       </div>
 
                       <div class="form-group">
                         <label for="password" class="col-sm-3 control-label">Password</label>
                         <div class="col-sm-9">
-                          <input type="password" class="form-control" id="login-password" placeholder="Password">
+                          <input type="password" class="form-control" id="login-password" placeholder="Password" name='password'>
                         </div>
                       </div>
 

@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'south',
     'stories',
     'crispy_forms',
+    'auth'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -96,7 +97,7 @@ TEMPLATE_DIRS = (
     os.path.join(os.path.dirname(os.path.realpath(__file__)), 'templates'),
 )
 
-LOGIN_URL = '/login/'
+LOGIN_URL = '/auth/'
 LOGIN_REDIRECT_URL = '/'
 
 APPEND_SLASH = True

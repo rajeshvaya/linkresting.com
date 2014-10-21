@@ -6,7 +6,10 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
     url(r'^admin/', include(admin.site.urls)),
-    url(r'', include('stories.urls')),
-    url(r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'auth/auth.html'}),
 
+    url(r'^auth/signin/$', 'auth.views.signin', name='auth.signin'),
+    url(r'^auth/signup/$', 'auth.views.signup', name='auth.signup'),
+    url(r'^auth/$', 'auth.views.auth'),
+    
+    url(r'', include('stories.urls')),
 )
