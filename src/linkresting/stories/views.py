@@ -18,7 +18,9 @@ def submit(request):
 	if request.method == 'POST':
 		form = StoryForm(request.POST)
 		if form.is_valid():
-			form.save()
+			record = form.save(commit=False)
+			record.moderator = request.user
+			record.save()
 			return HttpResponseRedirect('/')
 	else:
 		form = StoryForm()

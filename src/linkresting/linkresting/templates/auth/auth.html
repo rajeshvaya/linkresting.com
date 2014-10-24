@@ -8,10 +8,10 @@
                 <div class="login-container">
                     <h2>Sign In</h2>
                     <hr/>
-                    {% if form.errors %}
-                    <p>Your username and password didn't match. Please try again.</p>
+                    {% if forms.errors %}
+                    <p class='login-error-message'>Your email and password didn't match.</p>
                     {% endif %}
-                    <form class="form-horizontal" role="" autocomplete="off" action="{% url 'auth.signin' %}" method="POST">{% csrf_token %}
+                    <form class="form-horizontal" role="" autocomplete="off" action="{% url 'auth.signin' %}?next={{next}}" method="POST">{% csrf_token %}
                       <div class="form-group">
                         <label for="email" class="col-sm-3 control-label">Email</label>
                         <div class="col-sm-9">

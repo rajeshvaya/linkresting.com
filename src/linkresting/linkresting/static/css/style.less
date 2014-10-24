@@ -79,9 +79,21 @@
 
 /********* MIXINS *********/
 
+html,body{
+  height: 100%;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
 body{
+  position: relative;
 	font-family: "Raleway", "Helvetica";
 	background-color: rgb(241, 242, 246);
+  .body-wrapper{
+    position: relative;
+    min-height: 90%;
+  }
 }
 
 .form-control{
@@ -96,10 +108,11 @@ body{
 	border-top: 1px dotted black;
 }
 
+
 .footer{
-	position: absolute;
-	bottom: 0;
-	width: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
 	border-top: 1px dotted #aaa;
 	padding:10px;
 	text-align: center;	
@@ -135,6 +148,20 @@ body{
 .comments-container{
 	margin-top: 20px;
 	
+}
+
+
+.stories-container{
+  height: 100%;
+}
+
+
+.login-container{
+  .login-error-message{
+    color: #e8273b;
+    text-align: right;
+    align: right;
+  }
 }
 
 
