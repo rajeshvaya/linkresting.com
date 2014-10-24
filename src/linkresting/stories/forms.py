@@ -10,7 +10,7 @@ class StoryForm(ModelForm):
 	helper.error_text_inline = True
 	helper.label_class = "col-md-2"
 	helper.field_class = 'col-md-9'
-
+	
 	class Meta:
 		model = Story
 		exclude = ('moderator',)

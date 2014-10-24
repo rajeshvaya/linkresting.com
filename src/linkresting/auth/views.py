@@ -3,9 +3,13 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.core.urlresolvers import reverse
 
-def signin(request):
-    print request.GET.get('next', False)
+from forms import SignupForm
 
+def auth(request):
+    
+    return render(request, 'auth/auth.html', {'SignupForm': SignupForm()})
+
+def signin(request):
     if request.POST:
         username = request.POST['username']
         password = request.POST['password']
@@ -20,23 +24,18 @@ def signin(request):
                 else:
                     return HttpResponseRedirect(reverse('stories.index'))
         else:
-            print "inside error handler"
-            data = {
-                'forms': {'errors': True}
-            }
+            data = {'signin_form': {'errors': True}}
             return render(request, 'auth/auth.html', data)
 
-    
     if request.user.is_authenticated():
-        return HttpResponseRedirect("stories.index")
+        return HttpResponseRedirect(reverse("stories.index"))
     else:
         return render(request, 'auth/auth.html', {'next': request.GET.get('next', '') })
 
 def signup(request):
-	if request.POST:
-		pass
-	else:
-		HttpResponseRedirect(request, 'auth/auth.html')
+    return render(request, 'auth/auth.html', {SignupForm: SignupForm()})
+    
+	
 
 def signout(request):
     if request.user.is_authenticated():
