@@ -9,7 +9,8 @@ urlpatterns = patterns('',
 
     url(r'^auth/signin/$', 'auth.views.signin', name='auth.signin'),
     url(r'^auth/signup/$', 'auth.views.signup', name='auth.signup'),
-    url(r'^auth/$', 'auth.views.auth'),
+    url(r'^auth/signout/$', 'auth.views.signout', name='auth.signout'),
+    url(r'^auth/$', 'auth.views.auth', name="auth"),
     
     url(r'', include('stories.urls')),
 )

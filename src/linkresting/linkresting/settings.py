@@ -103,3 +103,7 @@ LOGIN_REDIRECT_URL = '/'
 APPEND_SLASH = True
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+AUTHENTICATION_BACKENDS = (
+    'auth.backends.EmailOrUsernameModelBackend',
+)
