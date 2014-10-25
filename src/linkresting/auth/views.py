@@ -5,6 +5,8 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 
 from forms import SignupForm
+import string, random, datetime, time
+
 
 def auth(request):
 
@@ -67,11 +69,24 @@ def signup(request):
         except User.DoesNotExist:
             u = None
 
-        if(u is None):
+        if(u is not None):
+            view_data.setdefault('signup_form',{}).setdefault('errors',[]).append("Email address already exists")
             return render(request, 'auth/auth.html', view_data)
+        else:
+            username = str(int(time.time())) + id_generator(6)
+            names = name.split(" ", 1)
+            first_name = str(names[0])
+            last_name = str(names[1])
+            new_user = User.objects.create_user(username=username, email=email, password=password1, first_name=first_name, last_name=last_name)
+            new_user.save()
+            if new_user.is_active:
+                authenticated_user = authenticate(username=username, password=password1) #need to do this to set the backend property
+                login(request, authenticated_user)
+                if request.GET.get('next', False):
+                    return HttpResponseRedirect(request.GET['next'])
+                else:
+                    return HttpResponseRedirect(reverse('stories.index'))
 
-        # proceed with creating user
-    
     return render(request, 'auth/auth.html')
     
 	
@@ -82,3 +97,5 @@ def signout(request):
     return HttpResponseRedirect(reverse("stories.index"))
 
  		
+def id_generator(size=6, chars=string.ascii_uppercase + string.digits):
+    return ''.join(random.choice(chars) for _ in range(size))
