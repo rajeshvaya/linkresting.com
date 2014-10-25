@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 class Story(models.Model):
 	title = models.CharField(max_length=200)
-	url = models.URLField()
+	url = models.URLField(unique=True)
 	moderator =	models.ForeignKey(User)
 	created_at = models.DateTimeField(auto_now_add=True, verbose_name="Created time")
 	updated_at = models.DateTimeField(auto_now=True)
