@@ -13,4 +13,6 @@ urlpatterns = patterns('',
     url(r'^auth/$', 'auth.views.auth', name="auth"),
     
     url(r'', include('stories.urls')),
+
+    url(r'^.*$', 'stories.views.index'), # default page for 404 not found
 )

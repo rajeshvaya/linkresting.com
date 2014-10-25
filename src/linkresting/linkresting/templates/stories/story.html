@@ -1,15 +1,15 @@
 {% extends "layout/default/template.html" %}
+{% load url from future %}
 {% load story_extras %}
 
 {% block content %}
-	<div class="container-fluid">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-10">
                 <div class="stories-container">
                     <div class="stories">
-                        <ol>
-                        	{% for story in stories %}
-                            <li class="story">
+                        <div>
+                            <div class="story">
                                 <div class="story-link">
                                     <div class="story-title">
                                         <a href="{{ story.url }}" target="_blank">{{ story.title }}</a>
@@ -22,16 +22,35 @@
                                     <span class="story-moderator">Submitted by {{ story.moderator.username }} </span><!-- story-moderator -->
                                     <span class="divider"> | </span>
                                     <span class="story-time">  {{ story.created_at | age}} ago </span> <!-- story-time -->
-                                    <span class="divider"> | </span>
-                                    <span class="story-comments"> <a href="story/{{ story.id }}">discuss</a> </span> <!-- story-comments -->
                                 </div><!-- story-info -->
-                            </li><!-- story -->
-                            {% endfor %}
-                        </ol>
+                            </div><!-- story -->
+                        </div>
                     </div><!-- stories -->
                 </div><!-- stories-container -->
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-md-9">
+                <div class="comments-container">
+                    <div id="disqus_thread"></div>
+                </div><!-- comments-container -->
+            </div><!-- col-md -->
+        </div><!-- row -->
     </div> <!-- container -->
+
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'linkresting'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 {% endblock content %}
+
 

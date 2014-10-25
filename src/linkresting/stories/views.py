@@ -26,3 +26,12 @@ def submit(request):
 		form = StoryForm()
 
 	return render(request, 'stories/submit.html', {'form': form})
+
+def story(request, id=0):
+	try:
+		s = Story.objects.get(pk=id)
+	except Story.DoesNotExist:
+		return HttpResponseRedirect('/')
+
+	return render(request, 'stories/story.html', {'story': s})
+	
