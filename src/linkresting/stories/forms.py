@@ -1,3 +1,4 @@
+from django import forms
 from django.forms import ModelForm
 from crispy_forms.helper import FormHelper
 
@@ -14,3 +15,11 @@ class StoryForm(ModelForm):
 	class Meta:
 		model = Story
 		exclude = ('moderator',)
+		error_messages = {
+			'url' : {
+				'unique' : "This URL has already been submitted",
+			},
+			'title' :{
+				'required' : "Title is required"
+			}
+		}
