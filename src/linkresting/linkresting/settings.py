@@ -39,7 +39,7 @@ INSTALLED_APPS = (
     'south',
     'stories',
     'crispy_forms',
-    'auth'
+    'auth',
 )
 
 MIDDLEWARE_CLASSES = (

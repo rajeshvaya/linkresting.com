@@ -8,25 +8,7 @@
                 <div class="stories-container">
                     <div class="stories">
                         <ol>
-                        	{% for story in stories %}
-                            <li class="story">
-                                <div class="story-link">
-                                    <div class="story-title">
-                                        <a href="{{ story.url }}" target="_blank">{{ story.title }}</a>
-                                        <span class="story-domain"> ({{ story.domain }}) </span><!-- story-domain -->
-                                    </div> <!-- story-title -->
-                                    
-                                    <div class="clearfix"></div>
-                                </div><!-- story-link -->
-                                <div class="story-info">
-                                    <span class="story-moderator">Submitted by {{ story.moderator.first_name }} {{ story.moderator.last_name }} </span><!-- story-moderator -->
-                                    <span class="divider"> | </span>
-                                    <span class="story-time">  {{ story.created_at | age}} ago </span> <!-- story-time -->
-                                    <span class="divider"> | </span>
-                                    <span class="story-comments"> <a href="story/{{ story.id }}">discuss</a> </span> <!-- story-comments -->
-                                </div><!-- story-info -->
-                            </li><!-- story -->
-                            {% endfor %}
+                        	{% include 'stories/stories.ajax.html' %}
                         </ol>
                     </div><!-- stories -->
                 </div><!-- stories-container -->

@@ -5,13 +5,15 @@ from django.contrib.auth.decorators import login_required
 from stories.models import Story
 from stories.forms import StoryForm
 
+
 def top_stories(limit_start=0, limit_end=30):
+	return Story.objects.all().order_by('-pk')
 	lastest_stories = Story.objects.all().order_by('-created_at')[limit_start:limit_end]
 	return lastest_stories
 
-def index(request):
+def index(request, template='index.html', extra_context=None):
 	stories = top_stories()
-	return render(request, 'index.html', {'stories': stories})
+	return render(request, template, {'stories': stories})
 
 @login_required
 def submit(request):
