@@ -10,7 +10,7 @@
                     <h2>Sign In</h2>
                     <hr/>
                     {% if signin_form.errors %}
-                      <p class='login-error-message'>Your email and password didn't match.</p>
+                      <p class='auth-error-message'>Your email and password didn't match.</p>
                     {% endif %}
                     <form class="form-horizontal" role="" autocomplete="off" action="{% url 'auth.signin' %}?next={{next}}" method="POST">{% csrf_token %}
                       <div class="form-group">
@@ -49,29 +49,40 @@
                 <div class="register-container">
                     <h2>Sign Up</h2>
                     <hr/>
-                    
+
                     {% if signup_form.errors %}
-                      <p class='login-error-message'>Your email and password didn't match.</p>
+                      <p class='auth-error-message'>
+                        {% for error in signup_form.errors %}
+                          <span>{{error}}</span><br/>
+                        {% endfor %}
+                      </p>
                     {% endif %}
                     <form class="form-horizontal" role="" autocomplete="off" action="{% url 'auth.signup' %}?next={{next}}" method="POST">{% csrf_token %}
                       <div class="form-group">
-                        <label for="name" class="col-sm-3 control-label">Name</label>
+                        <label for="name" class="col-sm-3 control-label">Name*</label>
                         <div class="col-sm-9">
-                          <input type="text" class="form-control" id="register-name" placeholder="Name">
+                          <input type="text" class="form-control" id="register-name" placeholder="Name" name="name" value={{request.POST.name}}>
                         </div>
                       </div>
 
                       <div class="form-group">
-                        <label for="email" class="col-sm-3 control-label">Email</label>
+                        <label for="email" class="col-sm-3 control-label">Email*</label>
                         <div class="col-sm-9">
-                          <input type="email" class="form-control" id="register-email" placeholder="Email">
+                          <input type="email" class="form-control" id="register-email" placeholder="Email" name="email" value={{request.POST.email}}>
                         </div>
                       </div>
 
                       <div class="form-group">
-                        <label for="password" class="col-sm-3 control-label">Password</label>
+                        <label for="password" class="col-sm-3 control-label">Password*</label>
                         <div class="col-sm-9">
-                          <input type="password" class="form-control" id="register-password" placeholder="Password">
+                          <input type="password" class="form-control" id="register-password" placeholder="Password" name="password1">
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="password" class="col-sm-3 control-label">Confirm*</label>
+                        <div class="col-sm-9">
+                          <input type="password" class="form-control" id="register-password" placeholder="Confirm Password" name="password2">
                         </div>
                       </div>
 
