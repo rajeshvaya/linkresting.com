@@ -3,6 +3,7 @@
 {% load url from future %}
 
 {% block content %}
+<div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="false"></div>
 	<div class="container">
         <div class="row">
             <div class="col-md-4">
@@ -44,10 +45,13 @@
             </div>
 
             <div class="col-md-offset-1 col-md-3">
-              <h2>Social Sign-in</h2>
+              <h2>Social Sign In</h2>
               <hr/>
               <div class="social-login-container">
-                <a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}"><img src="{{STATIC_URL}}/img/sign-in-with-twitter-gray.png"/></a>
+                <a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}"><img src="{{STATIC_URL}}img/sign-in-with-twitter-gray.png"/></a>
+                <br/>
+                <br/>
+                <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}"><img src="{{STATIC_URL}}img/sign-in-with-facebook.png"/></a>
               </div> <!-- social-long-container -->
             </div>
         </div><!-- row -->
