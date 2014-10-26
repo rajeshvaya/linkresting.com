@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from stories.models import Story
 from stories.forms import StoryForm
@@ -12,7 +13,17 @@ def top_stories(limit_start=0, limit_end=30):
 	return lastest_stories
 
 def index(request, template='index.html', extra_context=None):
-	stories = top_stories()
+	stories_list = top_stories()
+	paginator = Paginator(stories_list, 25)
+	
+	page = request.GET.get('page')
+	try:
+		stories = paginator.page(page)
+	except PageNotAnInteger:
+		stories = paginator.page(1)
+	except EmptyPage:
+		stories = paginator.page(paginator.num_pages)
+
 	return render(request, template, {'stories': stories})
 
 @login_required
