@@ -36,10 +36,11 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'south',
+    #'south',
     'stories',
     'crispy_forms',
     'auth',
+    'social.apps.django_app.default'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -104,6 +105,16 @@ APPEND_SLASH = True
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
+TEMPLATE_CONTEXT_PROCESSORS +=(
+    'social.apps.django_app.context_processors.backends',
+    'social.apps.django_app.context_processors.login_redirect',
+)
+
 AUTHENTICATION_BACKENDS = (
     'auth.backends.EmailOrUsernameModelBackend',
+    'social.backends.twitter.TwitterOAuth',
 )
+
+SOCIAL_AUTH_TWITTER_KEY = "3T64PQ3FJ26j5TqKUGmRNll9q"
+SOCIAL_AUTH_TWITTER_SECRET = "xDACrOjN0YcPUY9XTzglSkojU8VfMUFyCG5lIJAkQrwx0kv361"

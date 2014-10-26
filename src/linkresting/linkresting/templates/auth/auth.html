@@ -36,6 +36,20 @@
                     </form>
                 </div><!-- login-container -->
             </div>
+
+            <div class="col-md-offset-1 col-md-1 hidden-sm hidden-xs">
+              <div class="or-container">
+                <h2>OR</h2>
+              </div><!-- or-container -->
+            </div>
+
+            <div class="col-md-offset-1 col-md-3">
+              <h2>Social Sign-in</h2>
+              <hr/>
+              <div class="social-login-container">
+                <a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}"><img src="{{STATIC_URL}}/img/sign-in-with-twitter-gray.png"/></a>
+              </div> <!-- social-long-container -->
+            </div>
         </div><!-- row -->
     </div><!-- container -->
 

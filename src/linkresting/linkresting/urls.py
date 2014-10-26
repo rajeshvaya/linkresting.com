@@ -14,5 +14,9 @@ urlpatterns = patterns('',
     
     url(r'', include('stories.urls')),
 
+    url('', include('social.apps.django_app.urls', namespace='social')), # social login
+    url('', include('django.contrib.auth.urls', namespace='auth')),
+
+
     url(r'^.*$', 'stories.views.index'), # default page for 404 not found
 )
