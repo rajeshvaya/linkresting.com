@@ -7,11 +7,30 @@
             <div class="col-md-10">
                 <div class="stories-container">
                     <div class="stories">
-                        <ol>
+                        <ol start='{{list_numbering_start}}'>
                         	{% include 'stories/stories.ajax.html' %}
                         </ol>
                     </div><!-- stories -->
                 </div><!-- stories-container -->
+
+                <div class="pagination-container">
+                    <ul class="pagination pagination-centered">
+                        {% if stories.has_previous %}
+                            <li><a href="?page=1"><<</a></li>
+                            <li><a href="?page={{ stories.previous_page_number }}"><</a></li>
+                        {% endif %}
+    
+                        {% for i in paginator.page_range %}
+                            <li {% if stories.number == i %} class="active" {% endif %}><a href="?page={{i}}">{{i}}</a></li>
+                        {% endfor %}
+
+                        {% if stories.has_next %}
+                            <li><a href="?page={{ stories.next_page_number }}">></a></li>
+                            <li><a href="?page={{ stories.paginator.num_pages }}">>></a></li>
+                        {% endif %}
+                    </ul>
+                </div><!-- pagination-container -->
+
             </div>
         </div>
     </div> <!-- container -->

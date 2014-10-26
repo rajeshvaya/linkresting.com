@@ -14,17 +14,23 @@ def top_stories(limit_start=0, limit_end=30):
 
 def index(request, template='index.html', extra_context=None):
 	stories_list = top_stories()
-	paginator = Paginator(stories_list, 25)
+	links_per_page = 20
+	list_numbering_start = 1
+	paginator = Paginator(stories_list, links_per_page)
 	
 	page = request.GET.get('page')
 	try:
 		stories = paginator.page(page)
+		list_numbering_start = int((int(page)-1) * links_per_page) + 1
 	except PageNotAnInteger:
 		stories = paginator.page(1)
+		list_numbering_start = 1
 	except EmptyPage:
 		stories = paginator.page(paginator.num_pages)
+		if(paginator.num_pages > 1):
+			list_numbering_start = int((int(paginator.num_pages)-1) * int(links_per_page)) + 1
 
-	return render(request, template, {'stories': stories})
+	return render(request, template, {'stories': stories, 'list_numbering_start': list_numbering_start})
 
 @login_required
 def submit(request):
