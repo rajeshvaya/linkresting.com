@@ -1,0 +1,27 @@
+{% extends "layout/default/template.html" %}
+
+{% block content %}
+	<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-10">
+					<h2>Github</h2>
+					<p>Entire code of linkresting is hosted at <a href="https://github.com/rajeshvaya/linkresting.com" target="_blank">Github</a>, You can setup your own linkresting or fork it to contribute</p>
+					<br/>
+					<h2>Contribution</h2>
+					<p>Linkresting is developed entirely in Python and Vagrant. To contribute to linkresting:
+						<ul>
+							<li>Install Vagrant (if you don't already have it)</li>
+							<li>Fork the repositary and clone to your local machine</li>
+							<li>Run "vagrant up"</li>
+							<li>Switch to virtualenv "default" by  using "workon default"</li>
+							<li>Contribute to the /src</li>
+							<li>Merging the code is only a pull request away</li>
+						</ul>
+					</p>
+					<br/>
+					<h2>Report a bug?</h2>
+					<p>Create an <a href="https://github.com/rajeshvaya/linkresting.com/issues" target="_blank">Issue</a> on Github</p>
+				</div>
+			</div><!-- row -->
+		</div><!-- container -->
+{% endblock content %}

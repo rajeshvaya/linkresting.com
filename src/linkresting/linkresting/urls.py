@@ -1,4 +1,6 @@
 from django.conf.urls import patterns, include, url
+from django.views.generic import TemplateView
+
 
 from django.contrib import admin
 admin.autodiscover()
@@ -16,6 +18,10 @@ urlpatterns = patterns('',
 
     url('', include('social.apps.django_app.urls', namespace='social')), # social login
     url('', include('django.contrib.auth.urls', namespace='auth')),
+
+    url(r'^info/about$', TemplateView.as_view(template_name="info/about.html"), name="info.about"),
+    url(r'^info/github$', TemplateView.as_view(template_name="info/github.html"), name="info.github"),
+    url(r'^info/inspire$', TemplateView.as_view(template_name="info/inspire.html"), name="info.inspire"),
 
 
     url(r'^.*$', 'stories.views.index'), # default page for 404 not found
