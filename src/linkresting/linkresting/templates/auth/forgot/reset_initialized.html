@@ -1,0 +1,21 @@
+{% extends "layout/default/template.html" %}
+{% load crispy_forms_tags %}
+{% load url from future %}
+
+{% block content %}
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-10 ">
+				<h2>Reset password email sent </h2>
+				<br/>
+				<p>
+					Instructions for resetting the password has been sent to your email.
+					<br/>
+					<small>Note: If you do not see the email from us in your inbox, don't forget to check spam.</small>
+				</p>
+				<p><a href="{% url 'auth'%}">Sign in</a> now</p>
+			</div> 
+		</div><!-- row -->
+	</div><!-- container -->
+{% endblock content %}
+

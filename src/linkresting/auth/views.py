@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
+from django.contrib.auth.views import password_reset, password_reset_confirm
 
 from forms import SignupForm
 import string, random, datetime, time
@@ -97,7 +98,20 @@ def signout(request):
     return HttpResponseRedirect(reverse("stories.index"))
 
 def forgot(request):
-    pass
+    if request.user.is_authenticated():
+        return HttpResponseRedirect(reverse("stories.index"))
+
+    return password_reset(
+        request,
+        template_name="auth/forgot/reset.html",
+        email_template_name="auth/forgot/reset_email.html",
+        subject_template_name='auth/forgot/reset_subject.html',
+        post_reset_redirect=reverse('auth.forgot_initialized')
+    )
+
+def forgot_initialized(request):
+    return render(request, "auth/forgot/reset_initialized.html")
+
 
 def id_generator(size=6, chars=string.ascii_uppercase + string.digits):
     return ''.join(random.choice(chars) for _ in range(size))
