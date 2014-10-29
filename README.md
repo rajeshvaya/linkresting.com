@@ -1,4 +1,4 @@
 
 #linkresting.com
 
-Share links with your friends
+Share and discuss interesting links with people
