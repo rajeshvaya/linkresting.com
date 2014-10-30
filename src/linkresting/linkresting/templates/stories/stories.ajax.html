@@ -14,7 +14,7 @@
             <span class="divider"> | </span>
             <span class="story-time">  {{ story.created_at | age}} ago </span> <!-- story-time -->
             <span class="divider"> | </span>
-            <span class="story-comments"> <a href="story/{{ story.id }}">discuss</a> </span> <!-- story-comments -->
+            <span class="story-comments"> <a href="{{request.build_absolute_uri}}story/{{story.id}}">discuss</a> </span> <!-- story-comments -->
         </div><!-- story-info -->
     </li><!-- story -->
     {% endfor %}

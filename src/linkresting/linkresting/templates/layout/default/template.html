@@ -74,6 +74,20 @@
                 <p><small>by</small> <a href="http://meexture.com">Meexture</a> Development House</p>
               </div>
         </div><!-- footer -->
+
+        <!-- DISQUS code to fetch the comments for every link on the home page and show counts instead of discuss-->
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'linkresting'; // required: replace example with your forum shortname
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+            var s = document.createElement('script'); s.async = true;
+            s.type = 'text/javascript';
+            s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+            }());
+        </script>
     </body>
     
     <script src="{{ STATIC_URL }}js/jquery.js"></script>

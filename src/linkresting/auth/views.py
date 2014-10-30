@@ -5,7 +5,7 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from django.contrib.auth.views import password_reset, password_reset_confirm
 
-from forms import SignupForm
+from forms import SignupForm, PasswordResetFormExtend
 import string, random, datetime, time
 
 
@@ -106,7 +106,8 @@ def forgot(request):
         template_name="auth/forgot/reset.html",
         email_template_name="auth/forgot/reset_email.html",
         subject_template_name='auth/forgot/reset_subject.html',
-        post_reset_redirect=reverse('auth.forgot_initialized')
+        post_reset_redirect=reverse('auth.forgot_initialized'),
+        password_reset_form=PasswordResetFormExtend
     )
 
 def forgot_initialized(request):
