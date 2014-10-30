@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
+from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
@@ -53,4 +54,6 @@ def story(request, id=0):
 		return HttpResponseRedirect('/')
 
 	return render(request, 'stories/story.html', {'story': s})
-	
+
+def delete(request, id=0):
+	return HttpResponseRedirect(reverse("stories.index"))
