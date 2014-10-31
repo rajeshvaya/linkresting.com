@@ -18,7 +18,7 @@
                 <span class="story-delete"> <a href="javascript:onclick=App.confirm_before_delete('{{request.build_absolute_uri}}story/delete/{{story.id}}')">delete</a> </span> <!-- story-comments -->
                 <span class="divider"> | </span>
             {% endif %}
-            <span class="story-comments"> <a href="{{request.build_absolute_uri}}story/{{story.id}}#disqus_thread">discuss</a> </span> <!-- story-comments -->
+            <span class="story-comments"> <a href="{{request.build_absolute_uri}}story/{{story.id}}#disqus_thread" data-disqus-identifier="{{DISQUS.IDENTIFIER_PREFIX}}/{{story.url}}">discuss</a> </span> <!-- story-comments -->
         </div><!-- story-info -->
     </li><!-- story -->
     {% endfor %}

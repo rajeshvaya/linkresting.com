@@ -110,6 +110,7 @@ TEMPLATE_CONTEXT_PROCESSORS +=(
     'django.core.context_processors.request',
     'social.apps.django_app.context_processors.backends',
     'social.apps.django_app.context_processors.login_redirect',
+    'linkresting.context_processors.disqus',
 )
 
 AUTHENTICATION_BACKENDS = (
