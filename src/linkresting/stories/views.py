@@ -18,7 +18,7 @@ def top_stories(request):
 
 def index(request, template='index.html', extra_context=None):
 	stories_list = top_stories(request)
-	links_per_page = 2
+	links_per_page = 20
 	list_numbering_start = 1
 	paginator = Paginator(stories_list, links_per_page)
 	
