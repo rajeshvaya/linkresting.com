@@ -111,6 +111,7 @@ TEMPLATE_CONTEXT_PROCESSORS +=(
     'social.apps.django_app.context_processors.backends',
     'social.apps.django_app.context_processors.login_redirect',
     'linkresting.context_processors.disqus',
+    'linkresting.context_processors.globals',
 )
 
 AUTHENTICATION_BACKENDS = (
@@ -118,6 +119,8 @@ AUTHENTICATION_BACKENDS = (
     'social.backends.twitter.TwitterOAuth',
     'social.backends.facebook.FacebookOAuth2',
 )
+
+BASE_URL = "http://localhost:8000/"
 
 SOCIAL_AUTH_TWITTER_KEY = "3T64PQ3FJ26j5TqKUGmRNll9q"
 SOCIAL_AUTH_TWITTER_SECRET = "xDACrOjN0YcPUY9XTzglSkojU8VfMUFyCG5lIJAkQrwx0kv361"

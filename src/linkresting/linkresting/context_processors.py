@@ -2,7 +2,6 @@ from django.conf import settings
 
 def disqus(request):
 	if settings.DEBUG:
-		print "here in test mode"
 		return {
 			'DISQUS':{
 				'SHORTNAME': 'linkresting',
@@ -16,6 +15,13 @@ def disqus(request):
 				'IDENTIFIER_PREFIX': 'linkresting'
 			}
 		}
+
+def globals(request):
+	return{
+		'GLOBALS':{
+			'BASE_URL': settings.BASE_URL
+		}
+	}
 
 	
 

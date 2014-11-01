@@ -16,17 +16,17 @@
                 <div class="pagination-container">
                     <ul class="pagination pagination-centered">
                         {% if stories.has_previous %}
-                            <li><a href="?page=1"><<</a></li>
-                            <li><a href="?page={{ stories.previous_page_number }}"><</a></li>
+                            <li><a href="?{{get_parameters_without_page.urlencode}}&page=1"><<</a></li>
+                            <li><a href="?{{get_parameters_without_page.urlencode}}&page={{ stories.previous_page_number }}"><</a></li>
                         {% endif %}
     
                         {% for i in paginator.page_range %}
-                            <li {% if stories.number == i %} class="active" {% endif %}><a href="?page={{i}}">{{i}}</a></li>
+                            <li {% if stories.number == i %} class="active" {% endif %}><a href="?{{get_parameters_without_page.urlencode}}&page={{i}}">{{i}}</a></li>
                         {% endfor %}
 
                         {% if stories.has_next %}
-                            <li><a href="?page={{ stories.next_page_number }}">></a></li>
-                            <li><a href="?page={{ stories.paginator.num_pages }}">>></a></li>
+                            <li><a href="?{{get_parameters_without_page.urlencode}}&page={{ stories.next_page_number }}">></a></li>
+                            <li><a href="?{{get_parameters_without_page.urlencode}}&page={{ stories.paginator.num_pages }}">>></a></li>
                         {% endif %}
                     </ul>
                 </div><!-- pagination-container -->

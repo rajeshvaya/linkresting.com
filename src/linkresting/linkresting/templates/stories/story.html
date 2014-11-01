@@ -19,7 +19,7 @@
                                     <div class="clearfix"></div>
                                 </div><!-- story-link -->
                                 <div class="story-info">
-                                    <span class="story-moderator">Submitted by {{ story.moderator.first_name }} {{ story.moderator.last_name }} </span><!-- story-moderator -->
+                                    <span class="story-moderator">Submitted by <a href="{{GLOBALS.BASE_URL}}?user={{story.moderator.id}}">{{ story.moderator.first_name }} {{ story.moderator.last_name }}</a> </span><!-- story-moderator -->
                                     <span class="divider"> | </span>
                                     <span class="story-time">  {{ story.created_at | age}} ago </span> <!-- story-time -->
                                 </div><!-- story-info -->

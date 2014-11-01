@@ -8,14 +8,17 @@ from stories.models import Story
 from stories.forms import StoryForm
 
 
-def top_stories(limit_start=0, limit_end=30):
-	return Story.objects.all().order_by('-pk')
-	lastest_stories = Story.objects.all().order_by('-created_at')[limit_start:limit_end]
-	return lastest_stories
+def top_stories(request):
+	user_id = request.GET.get('user', '')
+	if user_id.isdigit():
+		return Story.objects.all().filter(moderator__id=user_id).order_by('-pk')
+	else:
+		return Story.objects.all().order_by('-pk')
+	#lastest_stories = Story.objects.all().order_by('-created_at')[limit_start:limit_end]
 
 def index(request, template='index.html', extra_context=None):
-	stories_list = top_stories()
-	links_per_page = 20
+	stories_list = top_stories(request)
+	links_per_page = 2
 	list_numbering_start = 1
 	paginator = Paginator(stories_list, links_per_page)
 	
@@ -31,7 +34,11 @@ def index(request, template='index.html', extra_context=None):
 		if(paginator.num_pages > 1):
 			list_numbering_start = int((int(paginator.num_pages)-1) * int(links_per_page)) + 1
 
-	return render(request, template, {'stories': stories, 'list_numbering_start': list_numbering_start})
+	get_parameters_without_page = request.GET.copy()
+	if get_parameters_without_page.has_key('page'):
+		del get_parameters_without_page['page']
+
+	return render(request, template, {'stories': stories, 'list_numbering_start': list_numbering_start, 'get_parameters_without_page': get_parameters_without_page})
 
 @login_required
 def submit(request):
