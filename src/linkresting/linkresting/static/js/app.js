@@ -12,7 +12,8 @@ App = {
 			function(){
 				//swal("Ok, as you wish", "Going to delete now", "success");
 				window.location.href=url;
-			});
+			}
+		);
 	}
 
 };
