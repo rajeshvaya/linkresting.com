@@ -1,129 +1,129 @@
-"""
-Django settings for linkresting project.
+# """
+# Django settings for linkresting project.
 
-For more information on this file, see
-https://docs.djangoproject.com/en/1.6/topics/settings/
+# For more information on this file, see
+# https://docs.djangoproject.com/en/1.6/topics/settings/
 
-For the full list of settings and their values, see
-https://docs.djangoproject.com/en/1.6/ref/settings/
-"""
+# For the full list of settings and their values, see
+# https://docs.djangoproject.com/en/1.6/ref/settings/
+# """
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-import os
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'p26xba=pq%nk8jts&q@z1fel0sdah-29i^-fwbc^e!(5d_+9&0'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-TEMPLATE_DEBUG = True
-
-ALLOWED_HOSTS = []
+# # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+# import os
+# BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
-# Application definition
+# # Quick-start development settings - unsuitable for production
+# # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
-INSTALLED_APPS = (
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    #'south',
-    'stories',
-    'crispy_forms',
-    'auth',
-    'social.apps.django_app.default'
-)
+# # SECURITY WARNING: keep the secret key used in production secret!
+# SECRET_KEY = 'p26xba=pq%nk8jts&q@z1fel0sdah-29i^-fwbc^e!(5d_+9&0'
 
-MIDDLEWARE_CLASSES = (
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-)
+# # SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG = True
 
-ROOT_URLCONF = 'linkresting.urls'
+# TEMPLATE_DEBUG = True
 
-WSGI_APPLICATION = 'linkresting.wsgi.application'
+# ALLOWED_HOSTS = []
 
 
-# Database
-# https://docs.djangoproject.com/en/1.6/ref/settings/#databases
+# # Application definition
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'linkresting',
-        'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': 'localhost',
-        'PORT': '3306',
-    }
-}
+# INSTALLED_APPS = (
+#     'django.contrib.admin',
+#     'django.contrib.auth',
+#     'django.contrib.contenttypes',
+#     'django.contrib.sessions',
+#     'django.contrib.messages',
+#     'django.contrib.staticfiles',
+#     #'south',
+#     'stories',
+#     'crispy_forms',
+#     'auth',
+#     'social.apps.django_app.default'
+# )
 
-# Internationalization
-# https://docs.djangoproject.com/en/1.6/topics/i18n/
+# MIDDLEWARE_CLASSES = (
+#     'django.contrib.sessions.middleware.SessionMiddleware',
+#     'django.middleware.common.CommonMiddleware',
+#     'django.middleware.csrf.CsrfViewMiddleware',
+#     'django.contrib.auth.middleware.AuthenticationMiddleware',
+#     'django.contrib.messages.middleware.MessageMiddleware',
+#     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+# )
 
-LANGUAGE_CODE = 'en-us'
+# ROOT_URLCONF = 'linkresting.urls'
 
-TIME_ZONE = 'UTC'
-
-USE_I18N = True
-
-USE_L10N = True
-
-USE_TZ = True
+# WSGI_APPLICATION = 'linkresting.wsgi.application'
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.6/howto/static-files/
+# # Database
+# # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
-STATIC_URL = '/static/'
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'linkresting',
+#         'USER': 'root',
+#         'PASSWORD': 'root',
+#         'HOST': 'localhost',
+#         'PORT': '3306',
+#     }
+# }
 
-STATICFILES_DIRS = (
-    os.path.join(os.path.dirname(os.path.realpath(__file__)), 'static'),   
-)
+# # Internationalization
+# # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
-TEMPLATE_DIRS = (       
-    os.path.join(os.path.dirname(os.path.realpath(__file__)), 'templates'),
-)
+# LANGUAGE_CODE = 'en-us'
 
-LOGIN_URL = '/auth/'
-LOGIN_REDIRECT_URL = '/'
+# TIME_ZONE = 'UTC'
 
-APPEND_SLASH = True
+# USE_I18N = True
 
-CRISPY_TEMPLATE_PACK = 'bootstrap3'
+# USE_L10N = True
 
-from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
-TEMPLATE_CONTEXT_PROCESSORS +=(
-    'django.core.context_processors.request',
-    'social.apps.django_app.context_processors.backends',
-    'social.apps.django_app.context_processors.login_redirect',
-    'linkresting.context_processors.disqus',
-    'linkresting.context_processors.globals',
-)
+# USE_TZ = True
 
-AUTHENTICATION_BACKENDS = (
-    'auth.backends.EmailOrUsernameModelBackend',
-    'social.backends.twitter.TwitterOAuth',
-    'social.backends.facebook.FacebookOAuth2',
-)
 
-BASE_URL = "http://localhost:8000/"
+# # Static files (CSS, JavaScript, Images)
+# # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
-SOCIAL_AUTH_TWITTER_KEY = "3T64PQ3FJ26j5TqKUGmRNll9q"
-SOCIAL_AUTH_TWITTER_SECRET = "xDACrOjN0YcPUY9XTzglSkojU8VfMUFyCG5lIJAkQrwx0kv361"
+# STATIC_URL = '/static/'
 
-SOCIAL_AUTH_FACEBOOK_KEY = "549338855202354"
-SOCIAL_AUTH_FACEBOOK_SECRET = "b50a1613042c867f657cf28742a5fe70"
+# STATICFILES_DIRS = (
+#     os.path.join(os.path.dirname(os.path.realpath(__file__)), 'static'),   
+# )
+
+# TEMPLATE_DIRS = (       
+#     os.path.join(os.path.dirname(os.path.realpath(__file__)), 'templates'),
+# )
+
+# LOGIN_URL = '/auth/'
+# LOGIN_REDIRECT_URL = '/'
+
+# APPEND_SLASH = True
+
+# CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+# from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
+# TEMPLATE_CONTEXT_PROCESSORS +=(
+#     'django.core.context_processors.request',
+#     'social.apps.django_app.context_processors.backends',
+#     'social.apps.django_app.context_processors.login_redirect',
+#     'linkresting.context_processors.disqus',
+#     'linkresting.context_processors.globals',
+# )
+
+# AUTHENTICATION_BACKENDS = (
+#     'auth.backends.EmailOrUsernameModelBackend',
+#     'social.backends.twitter.TwitterOAuth',
+#     'social.backends.facebook.FacebookOAuth2',
+# )
+
+# BASE_URL = "http://localhost:8000/"
+
+# SOCIAL_AUTH_TWITTER_KEY = "3T64PQ3FJ26j5TqKUGmRNll9q"
+# SOCIAL_AUTH_TWITTER_SECRET = "xDACrOjN0YcPUY9XTzglSkojU8VfMUFyCG5lIJAkQrwx0kv361"
+
+# SOCIAL_AUTH_FACEBOOK_KEY = "549338855202354"
+# SOCIAL_AUTH_FACEBOOK_SECRET = "b50a1613042c867f657cf28742a5fe70"
