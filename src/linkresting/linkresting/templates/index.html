@@ -12,7 +12,13 @@
                         </ol>
                     </div><!-- stories -->
                 </div><!-- stories-container -->
-
+                
+                {% if stories|length == 0%}
+                    <p><i>
+                        No Links found
+                    </i></p>
+                {% endif %}
+                
                 <div class="pagination-container">
                     <ul class="pagination pagination-centered">
                         {% if stories.has_previous %}
@@ -30,7 +36,6 @@
                         {% endif %}
                     </ul>
                 </div><!-- pagination-container -->
-
             </div>
         </div>
     </div> <!-- container -->
