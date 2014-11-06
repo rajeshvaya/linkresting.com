@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.db.models import Q
 
 from stories.models import Story
 from stories.forms import StoryForm
@@ -10,8 +11,16 @@ from stories.forms import StoryForm
 
 def top_stories(request):
 	user_id = request.GET.get('user', '')
+	search = request.GET.get('search', '')
+	print "here"
+	print search
 	if user_id.isdigit():
 		return Story.objects.all().filter(moderator__id=user_id).order_by('-pk')
+	elif len(search) > 3:
+		print "here in search"
+		return Story.objects.all().filter(
+			Q(title__contains=search) | Q(url__contains=search)
+		)
 	else:
 		return Story.objects.all().order_by('-pk')
 	#lastest_stories = Story.objects.all().order_by('-created_at')[limit_start:limit_end]
