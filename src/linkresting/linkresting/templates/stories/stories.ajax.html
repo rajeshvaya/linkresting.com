@@ -15,7 +15,7 @@
             <span class="story-time">  {{ story.created_at | age}} ago </span> <!-- story-time -->
             <span class="divider"> | </span>
             {% if story.moderator.id == request.user.id and not 'day' in story.created_at|age %}
-                <span class="story-delete"> <a href="javascript:onclick=App.confirm_before_delete('{{request.build_absolute_uri}}story/delete/{{story.id}}')">delete</a> </span> <!-- story-comments -->
+                <span class="story-delete"> <a href=javascript:App.confirm_before_delete("{{GLOBALS.BASE_URL}}story/delete/{{story.id}}")>delete</a> </span> <!-- story-comments -->
                 <span class="divider"> | </span>
             {% endif %}
             <span class="story-comments"> <a href="{{GLOBALS.BASE_URL}}story/{{story.id}}#disqus_thread" data-disqus-identifier="{{DISQUS.IDENTIFIER_PREFIX}}/{{story.url}}">discuss</a> </span> <!-- story-comments -->

@@ -1,3 +1,6 @@
+import datetime
+
+from django.utils.timezone import utc
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
@@ -7,6 +10,8 @@ from django.db.models import Q
 
 from stories.models import Story
 from stories.forms import StoryForm
+
+
 
 
 def top_stories(request):
@@ -71,5 +76,19 @@ def story(request, id=0):
 
 	return render(request, 'stories/story.html', {'story': s})
 
+@login_required
 def delete(request, id=0):
+	try:
+		s = Story.objects.get(pk=id)
+		diff = (datetime.datetime.utcnow().replace(tzinfo=utc) - s.created_at.replace(tzinfo=utc)).days
+		if s.moderator.id == request.user.id and diff < 2:
+			s.delete()
+	except Story.DoesNotExist:
+		return HttpResponseRedirect('/')	
+	
 	return HttpResponseRedirect(reverse("stories.index"))
+
+
+
+
+
