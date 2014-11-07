@@ -84,9 +84,10 @@ def delete(request, id=0):
 		if s.moderator.id == request.user.id and diff < 2:
 			s.delete()
 	except Story.DoesNotExist:
-		return HttpResponseRedirect('/')	
-	
+		return HttpResponseRedirect(reverse("stories.index"))
+
 	return HttpResponseRedirect(reverse("stories.index"))
+	
 
 
 
