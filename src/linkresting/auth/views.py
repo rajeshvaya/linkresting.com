@@ -10,7 +10,6 @@ import string, random, datetime, time
 
 
 def auth(request):
-
     return render(request, 'auth/auth.html', {'SignupForm': SignupForm()})
 
 def signin(request):
